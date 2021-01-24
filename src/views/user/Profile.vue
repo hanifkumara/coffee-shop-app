@@ -125,7 +125,7 @@ export default {
           )
         })
     },
-    async updateImage (event) {
+    updateImage (event) {
       const file = event.target.files[0]
       const formData = new FormData()
       formData.append('image', file, file.name)
@@ -138,6 +138,7 @@ export default {
           )
         })
         .catch(err => {
+          console.log(err)
           Swal.fire(
             err.message,
             err.status,

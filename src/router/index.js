@@ -25,6 +25,7 @@ const routes = [
     path: '/',
     name: 'HomePage',
     component: HomePage,
+    redirect: '/auth/login',
     meta: { requiresVisitor: true }
   },
   {

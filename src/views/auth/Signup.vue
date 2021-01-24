@@ -30,7 +30,6 @@
               <Input type="text" placeholder="Enter your phone number" v-on:input="phone = $event.target.value" name="phone"/>
               <p style="color: red; font-size: 14px; margin-top: 5px;"  v-if="phone.length >= 1 && phone.length <= 10 ">Phone must be more than 10 character</p>
             </div>
-            <router-link :to="{name: 'Auth'}" class="forgot">Forgot password ?</router-link>
           <div class="button-rounded">
             <Button type="rounded" title="Sign Up"/>
           </div>
@@ -118,7 +117,7 @@ export default {
           .then(() => {
             Swal.fire(
               'Register success!!',
-              '',
+              'Please check your email message for confirmation account',
               'success'
             )
             this.$router.push({ path: '/auth/login' })

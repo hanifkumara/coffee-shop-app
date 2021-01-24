@@ -111,8 +111,7 @@ export default {
             let desc = ''
             if (error === 'Password wrong!') {
               message = 'Password wrong!'
-            }
-            if (error === 'User not found!') {
+            } else if (error === 'User not found!') {
               message = 'User not found!'
             } else {
               message = 'You have not verified your email'
