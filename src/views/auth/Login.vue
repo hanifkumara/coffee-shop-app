@@ -19,14 +19,13 @@
               <label for="email">Email Address :</label>
               <Input type="text" placeholder="Enter your email address" name="email" v-on:input="email = $event.target.value"/>
               <p style="color: red; font-size: 14px; margin-top: 5px;" v-if="email.length >=1 && !email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)">Format email invalid</p>
-
             </div>
             <div class="form-password">
               <label for="password" class="password">Password :</label>
               <Input type="password" placeholder="Enter your password" name="password" v-on:input="password = $event.target.value"/>
               <p style="color: red; font-size: 14px; margin-top: 5px;"  v-if="password.length >= 1 && password.length <= 5 ">Password must be more than 5 character</p>
             </div>
-            <router-link :to="{name: 'Auth'}" class="forgot">Forgot password ?</router-link>
+            <router-link :to="{name: 'ForgotPassword'}" class="forgot">Forgot password ?</router-link>
           <div class="button-rounded">
             <Button type="rounded" title="Login"/>
           </div>

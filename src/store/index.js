@@ -189,6 +189,18 @@ export default new Vuex.Store({
           })
       })
     },
+    forgotPassword (context, payload) {
+      return new Promise((resolve, reject) => {
+        console.log(payload)
+        axios.post(`${process.env.VUE_APP_SERVICE_API}/users/forgot-password`, payload)
+          .then(res => {
+            resolve(res)
+          })
+          .catch(err => {
+            reject(err.response)
+          })
+      })
+    },
     getUserCart ({ commit }) {
       return new Promise((resolve, reject) => {
         axios.get(`${process.env.VUE_APP_SERVICE_API}/orders/get-cart`)

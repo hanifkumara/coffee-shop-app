@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Auth from '../views/auth/Auth.vue'
 import Login from '../views/auth/Login.vue'
 import Signup from '../views/auth/Signup.vue'
+import ForgotPassword from '../views/auth/ForgotPassword.vue'
+import CreatePassword from '../views/auth/CreatePassword.vue'
 import User from '../views/user/User.vue'
 import Profile from '../views/user/Profile.vue'
 import editProduct from '../views/admin/editProduct.vue'
@@ -44,6 +46,18 @@ const routes = [
         path: 'signup',
         name: 'Signup',
         component: Signup,
+        meta: { requiresVisitor: true }
+      },
+      {
+        path: 'forgot-password',
+        name: 'ForgotPassword',
+        component: ForgotPassword,
+        meta: { requiresVisitor: true }
+      },
+      {
+        path: 'create-password/:token',
+        name: 'CreatePassword',
+        component: CreatePassword,
         meta: { requiresVisitor: true }
       }
     ]
