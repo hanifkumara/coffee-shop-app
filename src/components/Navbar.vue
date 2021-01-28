@@ -26,7 +26,7 @@
         <img src="../assets/img/chat (1) 1.png" alt="message">
       </div>
       <div class="icon avatar">
-        <img @click="pushToProfile" v-bind:src="getUser.avatar" alt="avatar">
+        <img @click="pushToProfile" v-bind:src="getUser.avatar" alt="avatar"  @error="imgPlaceholder">
       </div>
     </div>
     <div class="nav-right" v-if="model === 'Auth'">
@@ -56,6 +56,10 @@ export default {
   },
   methods: {
     ...mapActions(['getUserById']),
+    imgPlaceholder (e) {
+      console.log(e)
+      e.target.src = 'https://via.placeholder.com/300'
+    },
     handleNav () {
       const handle = this.$refs.navToogle
       handle.classList.toggle('slide')

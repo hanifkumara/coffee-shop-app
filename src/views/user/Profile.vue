@@ -7,7 +7,7 @@
           <div class="card-photo">
             <label for="file-upload" class="img-wrap">
               <div class="photo-wrap">
-                <img :src="getUser.avatar" alt="Coba">
+                <img :src="getUser.avatar" alt="Coba" @error="imgPlaceholder">
               </div>
               <h4 class="description-image">Upload Photo</h4>
             </label>
@@ -96,6 +96,10 @@ export default {
   },
   methods: {
     ...mapActions(['getUserById', 'updateUser']),
+    imgPlaceholder (e) {
+      console.log(e)
+      e.target.src = 'https://via.placeholder.com/300'
+    },
     logout () {
       localStorage.removeItem('token')
       localStorage.removeItem('userRole')
