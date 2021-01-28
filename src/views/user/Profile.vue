@@ -120,8 +120,8 @@ export default {
         })
         .catch(err => {
           Swal.fire(
-            err.message,
-            err.status,
+            err.data.message,
+            err.data.status,
             'error'
           )
         })
