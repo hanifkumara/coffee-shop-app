@@ -1,8 +1,10 @@
 <template>
 <div class="container mt-5">
     <div class="row">
-      <div class="col-md-4 p-3">
-        <img v-bind:src="getProduct.data.image" width="250" height="250" :alt="getProduct.data.name">
+      <div class="d-flex flex-column align-items-center col-md-4 p-3">
+        <div class="wrapper-image">
+          <img v-bind:src="getProduct.data.image" :alt="getProduct.data.name">
+        </div>
         <router-link  :to="{ path: `/admin/edit-product/${getProduct.data.id}` }" class="button-brown fw-bolder mx-auto mt-5 text-center text-decoration-none">Edit Product</router-link>
         <button class="button-yellow bg-dark fw-bolder mx-auto mt-5" @click="handleDelete(getProduct.data.id)">Delete</button>
       </div>
@@ -25,8 +27,10 @@
         <div class="card">
           <div class="card-body">
             <div class="row">
-              <div class="col-md-4 p-3">
-                <img v-bind:src="getProduct.data.image" width="100" height="100" :alt="getProduct.data.name">
+              <div class="col-md-4 d-flex flex-column align-items-center p-3">
+                <div class="wrapper-icon">
+                  <img v-bind:src="getProduct.data.image" :alt="getProduct.data.name">
+                </div>
               </div>
               <div class="col-md-4 d-flex align-items-center">
                 <h4 class="fw-bolder d-block text-center w-100">{{ getProduct.data.name }}</h4>
@@ -157,7 +161,19 @@ div.details {
 p.description {
   height: 50%;
 }
-
+.wrapper-image {
+  width: 270px;
+  height: 270px;
+}
+.wrapper-icon{
+  width: 90px;
+  height: 90px;
+}
+.wrapper-image > img, .wrapper-icon > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
 @media (max-width: 768px) {
   div.details {
     width: 100%;

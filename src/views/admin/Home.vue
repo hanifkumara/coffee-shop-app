@@ -12,7 +12,9 @@
         <div class="product-list row">
           <div class="col-md-4" v-for="product in getProducts" v-bind:key="product.id">
             <div class="product-card bg-light py-4 shadow" @click="openProductDetail(product.id)">
-              <img :src="product.image" class="mb-3" width="100" height="100" :alt="product.name">
+              <div class="wrapper-image">
+                <img :src="product.image" class="mb-3" width="100" height="100" :alt="product.name">
+              </div>
               <p class="product-name text-center">{{ product.name }}</p>
               <p class="product-price text-center fw-bolder">{{ product.price }}</p>
             </div>
@@ -28,7 +30,7 @@
             <li class="page-item" v-else :class="{ disabled: !getPagination.next }"><router-link :to="{ path: `/customer/home?keyword=${$route.query.keyword || ''}&page=${getPagination.next}` }" class="page-link">Next</router-link></li>
           </ul>
         </nav>
-        <router-link class="btn btn-primary btn-lg btn-block" style="width: 100%;" to="/admin/new-product">Create new product</router-link>
+        <router-link class="btn btn-primary mb-5 btn-lg btn-block" style="width: 100%;" to="/admin/new-product">Create new product</router-link>
       </div>
     </div>
   </div>
@@ -116,13 +118,24 @@ export default {
   width: 90%;
   cursor: pointer;
   margin: 1em auto;
-  /* border: 1px solid; */
   border-radius: .5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .product-card img {
   display: block;
   margin: auto;
   border-radius: 50%;
+}
+.wrapper-image{
+  width: 90px;
+  height: 90px;
+}
+.wrapper-image > img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 </style>

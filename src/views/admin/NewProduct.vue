@@ -10,7 +10,10 @@
           <Button type="rectangle2" title="Take a picture"/>
         </div>
         <form @submit.prevent enctype="multipart/form-data">
-        <input type="file" class="choose-file" ref="image" @change="handleImage($event)">
+          <label for="choose-file">
+            Choose Image
+          </label>
+          <input type="file" id="choose-file" ref="image" @change="handleImage($event)">
         </form>
         <h4 class="delivery">Delivery Hour :</h4>
         <div class="select">
@@ -351,6 +354,21 @@ form > .button {
   font-weight: 600;
   margin-top: 10px;
   cursor: pointer;
+}
+input[type="file"] {
+  display: none;
+}
+form > label {
+  margin-top: -35px;
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 10px;
+  background-color: orange;
+  text-align: center;
+  cursor: pointer;
+}
+form > label:hover {
+  transform: scale(1.01)
 }
 @media screen and (max-width: 540px) {
   .content{

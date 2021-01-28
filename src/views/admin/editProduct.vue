@@ -3,8 +3,9 @@
     <aside>
       <img :src="getProduct.data.image" width="250" alt="Product">
        <form @submit.prevent  enctype="multipart/form-data">
-      <input style="display: block; margin: 3em auto;" type="file" ref="image" @change="handleImage($event)">
-      </form>
+        <label for="input-image">Choose image</label>
+        <input type="file" id="input-image" style="display: block; margin: 3em auto;" ref="image" @change="handleImage($event)">
+        </form>
     </aside>
     <main>
       <Input style="margin-top: 2em;" v-on:input="name = $event.target.value" v-bind:value="getProduct.data.name" formStyle="underlined"/>
@@ -106,5 +107,20 @@ div aside img {
 div main {
   flex: 3;
   padding: 2em;
+}
+form > label {
+  border-radius: 10px;
+  margin-top: 30px;
+  width: 100%;
+  padding: 13px 0;
+  text-align: center;
+  background-color: rgb(255, 184, 51);
+  cursor: pointer;
+}
+form > label:hover {
+  transform: scale(1.02);
+}
+input#input-image {
+  display: none !important;
 }
 </style>

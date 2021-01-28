@@ -99,6 +99,7 @@ export default {
         paymentMethod: this.paymentMethod
       })
         .then((res) => {
+          console.log(res)
           Swal.fire(
             res.status,
             res.message,
@@ -129,7 +130,6 @@ export default {
           err.message,
           'error'
         )
-
         this.$router.push({ path: '/customer/home' })
       })
   }

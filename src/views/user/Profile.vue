@@ -5,10 +5,11 @@
         <h2 class="title mb-4">User Profile</h2>
         <div class="col-md-3">
           <div class="card-photo">
-            <label for="file-upload">
+            <label for="file-upload" class="img-wrap">
               <div class="photo-wrap">
                 <img :src="getUser.avatar" alt="Coba">
               </div>
+              <h4 class="description-image">Upload Photo</h4>
             </label>
             <input id="file-upload" type="file" @change="updateImage"/>
             <h2 class="text-center">{{getUser.displayName}}</h2>
@@ -204,6 +205,32 @@ h2.title{
 }
 [type="file"] {
   display: none
+}
+.img-wrap{
+  cursor: pointer;
+  position: relative;
+}
+.description-image {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border-radius: 48%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(158, 158, 158, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+.img-wrap:hover .description-image {
+  visibility: visible;
+  opacity: 1;
 }
 @media screen and (max-width: 767px) {
   .col-md-9{
