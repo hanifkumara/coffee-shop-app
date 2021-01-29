@@ -10,11 +10,13 @@
               <h2 class="order-summary">Order Summary</h2>
                 <div class="list-order d-flex justify-content-between" v-for="order in getCart.orders" v-bind:key="order.id">
                   <div class="list-left d-flex">
-                    <div class="img-product">
-                      <img :src="order.image" alt="product-img">
+                    <div class="wrapper-image">
+                      <div class="img-product">
+                        <img :src="order.image" alt="product-img">
+                      </div>
                     </div>
                     <div class="name-total">
-                      <h5>{{ order.name }}</h5>
+                      <p class="font-size: 14px;">{{ order.name }}</p>
                       <h6>x{{ order.amount }}</h6>
                     </div>
                   </div>
@@ -167,6 +169,8 @@ h2.title{
   margin-top: 20px;
 }
 .img-product{
+  box-sizing: border-box;
+  border: 1px solid;
   width: 90px;
   height: 90px;
   border-radius: 10px;
@@ -177,8 +181,13 @@ h2.title{
   width: 100%;
   height: 100%;
 }
+.wrapper-image{
+  width: fit-content
+}
 .name-total{
+  width: 60%;
   margin-left: 10px;
+  height: fit-content;
 }
 .list-total{
   margin-bottom: 30px;
@@ -218,6 +227,9 @@ button.confirm{
   font-weight: 600;
   border-radius: 10px;
   margin-top: 30px;
+}
+.list-left{
+  height: fit-content
 }
 @media screen and (max-width: 768px) {
   h2.title{

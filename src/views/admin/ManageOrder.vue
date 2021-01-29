@@ -9,8 +9,10 @@
             <h3 class="delivery-order">Delivery Order</h3>
               <div class="list-order mt-3 d-flex justify-content-between" v-for="order in getOrder.orders" v-bind:key="order.id">
                 <div class="list-order-left d-flex">
-                  <div class="img-product">
-                    <img :src="order.image" alt="img product">
+                  <div class="wrapper-image">
+                    <div class="img-product">
+                      <img :src="order.image" alt="img product">
+                    </div>
                   </div>
                   <div class="name-total">
                     <h6>{{ order.name }}</h6>
@@ -202,6 +204,9 @@ button.confirm{
   font-weight: 600;
   border-radius: 10px;
   margin-top: 30px;
+}
+.wrapper-image{
+  width: fit-content
 }
 @media screen and (max-width: 768px) {
   h2.title{
