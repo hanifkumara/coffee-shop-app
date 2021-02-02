@@ -18,14 +18,14 @@
 * [Customize configuration](#customize-configuration)
 
 ## About the Project
-Coffee shop adalah sebuah toko online yang menyediakan berbagai jenis product seperti kopi, jus, bakso dan lain-lain yang bisa di order dan melayani berbagai metode pengiriman yang terjamin aman dan halal.
+The coffee shop is an online store that provides various types of products such as coffee, juice, meatballs and others that can be ordered and serves various shipping methods that are guaranteed to be safe and halal.
 
 ### Example usage
 <h4>Role Admin</h4>
-Setelah login menampilkan semua data dan bisa menambah product. Klik di create new product, akan pindah ke halaman new-product. Isi keterangan product yang akan ditambahkan, jika sudah klik save product. Cara menghapus product kembali di page home, klik product yang akan di hapus, setela itu klik tombol delete menu, maka product akan dihapus.
+After logging in, it displays all data and can add products. Click on create new product, it will move to new-product page. Fill in the product information to be added, if you have clicked save product. How to delete a product again on the home page, click on the product to be deleted, then click the delete menu button, the product will be deleted.
 
 <h4>Role User</h4>
-Setelah berhasil register, langsung pindah ke page login. Jika berhasil login, akan masuk ke page home yang menapilkan semua list product, jika ingin memesan nya klik salah satu product tersebut. Setelah memilih salah satu product, akan masuk ke page product dan memilih metode pengirimannya lalu click add cart. Setelah itu pindah ke page cart untuk melakukan checkout sesuai product yang dipilih tadi. Jika ingin menambahkan product lagi, click menu product di bagian navbar dan pilih lagi product yang ingin di tambahkan. Jika sudah ingin melakukan pembayaran, klik menu your cart di bagian navbar. Pilih metode pembayaran dan klik confirm and pay
+After successfully registering, immediately move to the login page. If you have successfully logged in, you will go to the home page which displays all the product lists, if you want to order, click on one of the products. After selecting a product, you will enter the product page and choose the shipping method then click add cart. After that, move to the cart page to checkout according to the selected product. If you want to add more products, click the product menu on the navbar and select the product you want to add again. If you already want to make a payment, click the your cart menu on the navbar. Select a payment method and click confirm and pay
 
 
 ### Built with
@@ -92,3 +92,24 @@ yarn lint
     
 ## Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request   
+
+## Project Related
+
+[https://github.com/hanifkumara/coffee-shop-api](https://github.com/hanifkumara/coffee-shop-api)
+ 
+## Contact
+My Email : hanifkumara00@gmail.com
+
+LinkedIn : [https://www.linkedin.com/in/hanifkumara/](https://www.linkedin.com/in/hanifkumara/)
+
+Project Link: [https://github.com/hanifkumara/coffee-shop-app](https://github.com/hanifkumara/coffee-shop-app)
