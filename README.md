@@ -11,11 +11,14 @@
   * [Example Usage](#example-usage)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
-  * [Project setup](#project-setup)
+  * [Installation](#installation)
   * [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development)
   * [Lints and fixes files](#lints-and-fixes-files)
 * [Screenshots](#screenshots)
 * [Customize configuration](#customize-configuration)
+* [Contributing](#contributing)
+* [Project Related](#project-related)
+* [Contact](#contact)
 
 ## About the Project
 The coffee shop is an online store that provides various types of products such as coffee, juice, meatballs and others that can be ordered and serves various shipping methods that are guaranteed to be safe and halal.
@@ -35,15 +38,21 @@ https://vuejs.org/
 
 ## Getting started
 
-Clone the repo
+### Installation
+
+1. Clone the repo
+```sh
+git clone https://github.com/hanifkumara/coffee-shop-app.git
+```
+2. Install Yarn packages
 
 ```sh
-git clone https://github.com/syauqeesy/coffee-shop.git
-```
-## Project setup
-Intsall all dependencies
-```
 yarn install
+```
+
+3. Add .env file at root folder project, and add following
+```sh
+VUE_APP_SERVICE_API= http://localhost:5000/api/v1
 ```
 
 ### Compiles and hot-reloads for development
