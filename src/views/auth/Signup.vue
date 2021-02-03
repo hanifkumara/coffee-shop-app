@@ -31,7 +31,7 @@
               <p style="color: red; font-size: 14px; margin-top: 5px;"  v-if="phone.length >= 1 && phone.length <= 10 ">Phone must be more than 10 character</p>
             </div>
           <div class="button-rounded">
-            <Button type="rounded" title="Sign Up"/>
+            <Button type="rounded" :loading="loading" title="Sign Up"/>
           </div>
         </form>
       </div>
@@ -55,7 +55,8 @@ export default {
     return {
       email: '',
       password: '',
-      phone: ''
+      phone: '',
+      loading: false
     }
   },
   methods: {
@@ -108,6 +109,7 @@ export default {
           'error'
         )
       } else {
+        this.loading = true
         const payload = {
           email: this.email,
           password: this.password,
@@ -115,6 +117,7 @@ export default {
         }
         this.signup(payload)
           .then(() => {
+            this.loading = false
             Swal.fire(
               'Register success!!',
               'Please check your email message for confirmation account',
@@ -123,6 +126,7 @@ export default {
             this.$router.push({ path: '/auth/login' })
           })
           .catch(err => {
+            this.loading = false
             console.log(err.response.data)
             Swal.fire(
               'Email already exists!!',

@@ -13,7 +13,7 @@
       <Input formStyle="underlined" style="margin-top: 2em;" v-on:input="price = $event.target.value" v-bind:value="getProduct.data.price" />
       <Input formStyle="underlined" style="margin-top: 2em;" v-on:input="description = $event.target.value" v-bind:value="getProduct.data.description" />
       <p style="color: red; font-size: 14px; margin-top: 5px;"  v-if="description.length >= 1 && description.length <= 10 ">description must be more than 10 character</p>
-      <Button type="rectangle" @click="handleE" title="Save Change" />
+      <Button type="rectangle" @click="handleE" :loading="loading" title="Save Change" />
     </main>
   </div>
 </template>
@@ -40,7 +40,8 @@ export default {
         { id: 5, size: 100 }
       ],
       idProduct: this.$route.params.productId,
-      image: null
+      image: null,
+      loading: false
     }
   },
   components: {
@@ -56,6 +57,7 @@ export default {
       this.image = event.target.files[0]
     },
     handleE () {
+      this.loading = true
       const formData = new FormData()
       if (this.image) {
         formData.append('image', this.image, this.image.name)
@@ -66,12 +68,14 @@ export default {
       formData.append('id', this.idProduct)
       this.updateProduct(formData)
         .then((result) => {
+          this.loading = false
           Swal.fire(
             'Update data success!!',
             '',
             'success'
           )
         }).catch(err => {
+          this.loading = false
           console.log(err.response)
           Swal.fire(
             err.status,

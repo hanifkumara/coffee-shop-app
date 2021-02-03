@@ -27,7 +27,7 @@
             </div>
             <router-link :to="{name: 'ForgotPassword'}" class="forgot">Forgot password ?</router-link>
           <div class="button-rounded">
-            <Button type="rounded" title="Login"/>
+            <Button type="rounded" :loading="loading" title="Login"/>
           </div>
           <div class="google">
             <Button type="white" title="Login with Google" />
@@ -53,7 +53,8 @@ export default {
   data: function () {
     return {
       email: '',
-      password: ''
+      password: '',
+      loading: false
     }
   },
   methods: {
@@ -90,12 +91,14 @@ export default {
           'error'
         )
       } else {
+        this.loading = true
         const payload = {
           email: this.email,
           password: this.password
         }
         this.login(payload)
           .then(() => {
+            this.loading = false
             Swal.fire(
               'Login success',
               '',
@@ -104,7 +107,9 @@ export default {
             this.$router.push({ path: '/admin/home' })
           })
           .catch((err) => {
+            this.loading = false
             const error = err.response.data.message
+            console.log(err.response)
             console.log(error)
             let message = ''
             let desc = ''
@@ -116,10 +121,12 @@ export default {
               message = 'You have not verified your email'
               desc = 'If there is no message. Wait for a moment !'
             }
+            console.log(message)
+            console.log(desc)
             Swal.fire(
-            `${message}`,
-            `${desc}`,
-            'error'
+              message,
+              desc,
+              'error'
             )
           })
       }
