@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import router from '../router/index'
+import Swal from 'sweetalert2'
 
 Vue.use(Vuex)
 
@@ -25,6 +27,11 @@ export default new Vuex.Store({
     listStaffChat: []
   },
   mutations: {
+    REMOVE_TOKEN (state) {
+      state.token = null
+      state.userRole = null
+      state.userId = null
+    },
     SET_TOKEN (state, payload) {
       state.token = payload
     },
@@ -337,6 +344,19 @@ export default new Vuex.Store({
       axios.interceptors.response.use(function (response) {
         return response
       }, function (error) {
+        if (error.response.status === 401) {
+          if (error.response.data.message === 'Invalid Token') {
+            Swal.fire(error.response.data.message, 'Please login again', 'error')
+            localStorage.clear()
+            context.commit('REMOVE_TOKEN')
+            router.push({ name: 'Login' })
+          } else if (error.response.data.message === 'Token Expired') {
+            Swal.fire(error.response.data.message, 'Please login again', 'error')
+            localStorage.clear()
+            context.commit('REMOVE_TOKEN')
+            router.push({ name: 'Login' })
+          }
+        }
         return Promise.reject(error)
       })
     }

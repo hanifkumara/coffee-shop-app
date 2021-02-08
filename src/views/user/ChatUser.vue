@@ -14,7 +14,7 @@
             <div class="d-flex">
               <div class="wrapper-left-chat">
                 <div class="wrapper-photo">
-                  <img :src="data.avatar" alt="Photo User">
+                  <img :src="data.avatar" alt="Photo User" @error="imgPlaceholder">
                 </div>
               </div>
               <div class="wrapper-rigth-chat">

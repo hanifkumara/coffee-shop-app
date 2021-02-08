@@ -1,10 +1,16 @@
 <template>
   <div class="profile">
-    <div class="Lets-see-what-you-have-bought">
-      <p>Let’s see what you have bought!</p>
-    </div>
-    <div class="Long-press-to-delete">
-        Long press to delete item
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p class="lets-see">Let’s see what you have boughasat!</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p class="long-press">Long press to delete item</p>
+        </div>
+      </div>
     </div>
     <div class="container" style="display: flex; flex-wrap: wrap;">
         <CardHistory
@@ -67,64 +73,32 @@ html {
   color: #444444;
 }
 
-/* Create two equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 50%;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 label {
-    font-style: normal;
-    margin-left: 15px;
+  font-style: normal;
+  margin-left: 15px;
 }
 
 .profile {
   background: url("../../assets/img/Alat.png");
-  height: 1400px;
+  height: fit-content;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.Lets-see-what-you-have-bought{
-  width: 653px;
-  height: 20px;
-  margin: 107px 192px 20px 353px;
-  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.8);
-  font-family: Rubik;
-  font-size: 40px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+.lets-see{
+  color: white;
+  font-weight: 700;
+  font-size: 29px;
   text-align: center;
-  color: #ffffff;
 }
 
-.Long-press-to-delete {
-  margin: 40px 192px 59px 560px;
+.long-press {
+  text-align: center;
+  margin-bottom: 20px;
   font-family: Rubik;
   font-size: 20px;
   font-weight: normal;
   color: #ffffff;
-}
-
-.container {
-  display: flex;
-  padding: 10px 120px;
-  margin: 0;
-}
-
-.container1 {
-  display: flex;
-  padding: 0 50px 300px 50px;
 }
 </style>

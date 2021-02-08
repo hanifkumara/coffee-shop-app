@@ -20,7 +20,7 @@
                       <h6>x{{ order.amount }}</h6>
                     </div>
                   </div>
-                  <h5>{{ order.price }}</h5>
+                  <h5>Rp.{{ order.price | numFormat }}</h5>
                 </div>
                 <hr style="margin: 40px 0;">
                 <div class="list-total d-flex justify-content-between">
@@ -30,14 +30,14 @@
                     <h5>SHIPPING</h5>
                   </div>
                   <div class="right-text">
-                    <h5>{{ getCart.cart.subTotal }}</h5>
-                    <h5>{{ getCart.cart.tax }}</h5>
+                    <h5>Rp.{{ getCart.cart.subTotal | numFormat}}</h5>
+                    <h5>Rp.{{ getCart.cart.tax | numFormat}}</h5>
                     <h5>-</h5>
                   </div>
                 </div>
                 <div class="total-order d-flex justify-content-between">
                   <h2>TOTAL</h2>
-                  <h2>{{ getCart.cart.subTotal + getCart.cart.tax }}</h2>
+                  <h2>Rp.{{ getCart.cart.subTotal + getCart.cart.tax |  numFormat }}</h2>
                 </div>
               </div>
             </div>
@@ -170,7 +170,6 @@ h2.title{
 }
 .img-product{
   box-sizing: border-box;
-  border: 1px solid;
   width: 90px;
   height: 90px;
   border-radius: 10px;
