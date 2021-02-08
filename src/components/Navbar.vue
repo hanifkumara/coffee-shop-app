@@ -22,7 +22,7 @@
       <div class="icon search">
         <img src="../assets/img/search.svg" @click="showSearch = !showSearch" id="search-icon" alt="search">
       </div>
-      <div class="icon message">
+      <div class="icon message" @click="pushToMessage">
         <img src="../assets/img/chat (1) 1.png" alt="message">
       </div>
       <div class="icon avatar">
@@ -55,7 +55,7 @@ export default {
     ...mapGetters(['getRole', 'getUser'])
   },
   methods: {
-    ...mapActions(['getUserById']),
+    ...mapActions(['getUserById', 'setListStaffChat']),
     imgPlaceholder (e) {
       console.log(e)
       e.target.src = 'https://via.placeholder.com/300'
@@ -72,7 +72,19 @@ export default {
       this.$router.push({ path: `/admin/home?keyword=${this.keyword}` })
     },
     pushToProfile () {
-      this.$router.push({ path: '/customer/profile' })
+      if (this.model === 'admin') {
+        this.$router.push({ path: '/admin/profile-admin' })
+      } else {
+        this.$router.push({ path: '/customer/profile' })
+      }
+    },
+    pushToMessage () {
+      if (this.model === 'admin') {
+        this.setListStaffChat()
+        this.$router.push({ path: '/admin/chat-admin' })
+      } else {
+        this.$router.push({ path: '/customer/chat-user' })
+      }
     }
   },
   data () {

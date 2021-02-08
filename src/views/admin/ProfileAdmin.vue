@@ -2,7 +2,7 @@
   <div class="profile">
     <div class="container">
       <div class="row mb-3">
-        <h2 class="title mb-4">User Profile</h2>
+        <h2 class="title mb-4">Admin Profile</h2>
         <div class="col-md-3">
           <div class="card-photo">
             <label for="file-upload" class="img-wrap">
@@ -79,7 +79,7 @@ import { mapActions, mapGetters } from 'vuex'
 import Swal from 'sweetalert2'
 
 export default {
-  name: 'Profile',
+  name: 'ProfileAdmin',
   components: {
     Input,
     Button
@@ -102,7 +102,7 @@ export default {
       e.target.src = 'https://via.placeholder.com/300'
     },
     logout () {
-      Swal.fire('Logout Success!', 'see you again', 'success')
+      Swal.fire('Logout Success!', '', 'success')
       this.socket.emit('logout')
       localStorage.removeItem('token')
       localStorage.removeItem('userRole')
@@ -120,7 +120,7 @@ export default {
       this.updateUser(user)
         .then(res => {
           Swal.fire(
-            res.message,
+            'Admin profile updated',
             res.status,
             'success'
           )

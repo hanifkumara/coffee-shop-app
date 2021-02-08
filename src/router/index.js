@@ -1,14 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Dev from '../views/Dev/Dev.vue'
 import Auth from '../views/auth/Auth.vue'
 import Login from '../views/auth/Login.vue'
 import Signup from '../views/auth/Signup.vue'
 import ForgotPassword from '../views/auth/ForgotPassword.vue'
 import CreatePassword from '../views/auth/CreatePassword.vue'
 import User from '../views/user/User.vue'
+import ChatUser from '../views/user/ChatUser.vue'
+import ChatRoomUser from '../views/user/ChatRoomUser.vue'
 import Profile from '../views/user/Profile.vue'
 import editProduct from '../views/admin/editProduct.vue'
 import Admin from '../views/admin/Admin.vue'
+import ProfileAdmin from '../views/admin/ProfileAdmin.vue'
 import NewProduct from '../views/admin/NewProduct.vue'
 import PaymentDelivery from '../views/user/PaymentDelivery.vue'
 import ManageOrder from '../views/admin/ManageOrder.vue'
@@ -18,6 +22,8 @@ import UserProductDetail from '../views/user/ProductDetail.vue'
 import HomePage from '../views/user/HomePage.vue'
 import AdminProductDetail from '../views/admin/ProductDetail.vue'
 import HomeAdmin from '../views/admin/Home.vue'
+import ChatAdmin from '../views/admin/ChatAdmin.vue'
+import ChatRoomAdmin from '../views/admin/ChatRoomAdmin.vue'
 import ConfirmationEmail from '../views/auth/ConfirmationEmail.vue'
 
 Vue.use(VueRouter)
@@ -29,6 +35,11 @@ const routes = [
     component: HomePage,
     redirect: '/auth/login',
     meta: { requiresVisitor: true }
+  },
+  {
+    path: '/dev',
+    name: 'Dev',
+    component: Dev
   },
   {
     path: '/auth',
@@ -102,6 +113,20 @@ const routes = [
         name: 'UserProductDetail',
         component: UserProductDetail,
         meta: { requiresAuth: true }
+      },
+      {
+        path: 'chat-user',
+        name: 'ChatUser',
+        component: ChatUser,
+        meta: { requiresAuth: true },
+        children: [
+          {
+            path: ':id',
+            name: 'ChatRoomUser',
+            component: ChatRoomUser,
+            meta: { requiresAuth: true }
+          }
+        ]
       }
     ]
   },
@@ -140,6 +165,26 @@ const routes = [
         name: 'ManageOrder',
         component: ManageOrder,
         meta: { requiresAuth: true, requiresPriv: true }
+      },
+      {
+        path: 'profile-admin',
+        name: 'ProfileAdmin',
+        component: ProfileAdmin,
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'chat-admin',
+        name: 'ChatAdmin',
+        component: ChatAdmin,
+        meta: { requiresAuth: true, requiresPriv: true },
+        children: [
+          {
+            path: ':id',
+            name: 'ChatRoomAdmin',
+            component: ChatRoomAdmin,
+            meta: { requiresAuth: true, requiresPriv: true }
+          }
+        ]
       }
     ]
   }

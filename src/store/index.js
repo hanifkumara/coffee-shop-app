@@ -19,7 +19,10 @@ export default new Vuex.Store({
     user: {},
     cart: {},
     order: {},
-    history: []
+    history: [],
+    allStaff: [],
+    historyChat: [],
+    listStaffChat: []
   },
   mutations: {
     SET_TOKEN (state, payload) {
@@ -62,6 +65,15 @@ export default new Vuex.Store({
     },
     SET_ORDER (state, payload) {
       state.order = payload
+    },
+    SET_ALL_STAFF (state, payload) {
+      state.allStaff = payload
+    },
+    SET_HISTORY_CHAT (state, payload) {
+      state.historyChat = payload
+    },
+    SET_LIST_STAFF_CHAT (state, payload) {
+      state.listStaffChat = payload
     }
   },
   actions: {
@@ -201,6 +213,45 @@ export default new Vuex.Store({
           })
       })
     },
+    setAllStaff (context) {
+      return new Promise((resolve, reject) => {
+        axios.get(`${process.env.VUE_APP_SERVICE_API}/message/all-staff`)
+          .then(res => {
+            const { result } = res.data
+            context.commit('SET_ALL_STAFF', result)
+            resolve(result)
+          })
+          .catch((err) => {
+            reject(err.response)
+          })
+      })
+    },
+    setListStaffChat (context) {
+      return new Promise((resolve, reject) => {
+        axios.get(`${process.env.VUE_APP_SERVICE_API}/message/list-staff-chat`)
+          .then(res => {
+            const { result2 } = res.data
+            context.commit('SET_LIST_STAFF_CHAT', result2)
+            resolve(result2)
+          })
+          .catch((err) => {
+            reject(err.response)
+          })
+      })
+    },
+    setHistoryChat (context, id) {
+      return new Promise((resolve, reject) => {
+        axios.get(`${process.env.VUE_APP_SERVICE_API}/message/${id}`)
+          .then(res => {
+            const { result } = res.data
+            context.commit('SET_HISTORY_CHAT', result)
+            resolve(result)
+          })
+          .catch((err) => {
+            reject(err.response)
+          })
+      })
+    },
     getUserCart ({ commit }) {
       return new Promise((resolve, reject) => {
         axios.get(`${process.env.VUE_APP_SERVICE_API}/orders/get-cart`)
@@ -314,6 +365,15 @@ export default new Vuex.Store({
     },
     getHistory (state) {
       return state.history
+    },
+    getAllStaff (state) {
+      return state.allStaff
+    },
+    getHistoryChat (state) {
+      return state.historyChat
+    },
+    getlistStaffChat (state) {
+      return state.listStaffChat
     }
   }
 })
