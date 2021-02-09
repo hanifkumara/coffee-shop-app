@@ -13,7 +13,7 @@
           <div class="col-md-4" v-for="product in getProducts" v-bind:key="product.id">
             <div class="product-card py-4 bg-light shadow" @click="openProductDetail(product.id)">
               <div class="image-wrap">
-                <img :src="product.image" class="mb-3" width="100" height="100" :alt="product.name">
+                <img :src="product.image" class="mb-3" width="100" height="100" :alt="product.name" @error="imgPlaceholder">
               </div>
               <p class="product-name text-center">{{ product.name }}</p>
               <p class="product-price text-center fw-bolder">{{ product.price }}</p>
@@ -49,6 +49,10 @@ export default {
   },
   methods: {
     ...mapActions(['getAllProducts']),
+    imgPlaceholder (e) {
+      console.log(e)
+      e.target.src = 'https://via.placeholder.com/300'
+    },
     filterFood () {
       this.$router.push({ path: '/customer/home?keyword=Food' })
         .catch(() => {
