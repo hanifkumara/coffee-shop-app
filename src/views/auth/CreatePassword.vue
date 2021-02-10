@@ -12,7 +12,7 @@
         <img src="@/assets/img/ic_sharp-remove-red-eye.png" alt="icon-eye" @click="showPassword2">
       </div>
       <p class="text-danger" v-if="confirmPassword.length > 1 & confirmPassword.length <= 7">Pasword must be more than 7 characters</p>
-      <Button type="rounded" title="confirm"/>
+      <Button type="rounded" :loading="loading" title="confirm"/>
     </form>
   </div>
 </template>
@@ -31,7 +31,8 @@ export default {
     return {
       newPassword: '',
       confirmPassword: '',
-      errorNotSame: false
+      errorNotSame: false,
+      loading: false
     }
   },
   components: {
@@ -55,6 +56,7 @@ export default {
       if (this.confirmPassword.length <= 7) {
         Swal.fire('Pasword must be more than 7 characters', 'please check again', 'error')
       } else {
+        this.loading = true
         try {
           const token = this.$route.params.token
           const apiUrl = `${process.env.VUE_APP_SERVICE_API}`
@@ -67,8 +69,10 @@ export default {
           const result = await authAxios.patch('/users/reset-password', { password: this.newPassword })
           console.log(result)
           Swal.fire('Success', 'Lets go login now', 'success')
+          this.loading = false
           this.$router.push('/auth/login')
         } catch (error) {
+          this.loading = false
           console.log(error.response)
         }
       }

@@ -5,7 +5,7 @@
       <form @submit.prevent="handleSubmit">
         <Input name="email" label="Email" placeholder="Input your email" @input="email = $event.target.value"/>
         <p class="text-danger" v-if="email.length > 1 && !email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)">Email invalid</p>
-        <Button type="rounded" title="Confirm"/>
+        <Button type="rounded" :loading="loading" title="Confirm"/>
       </form>
     </div>
   </div>
@@ -25,7 +25,8 @@ export default {
   },
   data () {
     return {
-      email: ''
+      email: '',
+      loading: false
     }
   },
   methods: {
@@ -38,12 +39,15 @@ export default {
       if (!this.email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
         Swal.fire('Email invalid', 'please check again', 'error')
       } else {
+        this.loading = true
         this.forgotPassword({ email: this.email })
           .then(res => {
+            this.loading = false
             this.$router.push({ name: 'Login' })
             Swal.fire(res.data.message, 'please check your email for reset password', 'success')
           })
           .catch(err => {
+            this.loading = false
             Swal.fire(err.data.message, 'please check again', 'error')
             console.log(err.data.message)
           })
